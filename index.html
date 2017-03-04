@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery - exercice 1 - partie 4</title>
+    <script src="jquery-2.2.4.js"></script>
+  </head>
+  <body>
+    <form action="index.html" method="post">
+      <label for="salary">salaire :</label><input id="salary"  type="text" name="salary" value="">
+      <br>
+      <label for="man">homme</label><input id="man" type="radio" name="man" value="1">
+      <label for="woman">femme</label><input id="woman" type="radio" name="woman" value="2">
+      <br>
+      <label for="childrens">enfants :</label><input id="children" type="text" name="childrens" value="">
+      <br>
+      <button type="button" name="button">Cliquez !</button>
+    </form>
+    <script type="text/javascript">
+      $(function() {
+        $('button').click(function() { //déclaration de la fonction qui permet au code jQuery de n'être lu que lorsque la page est entièrement chargée
+          if ($('#man:radio:checked').val()) {//Si le boutton radio du genre homme est pressé
+            if ($('#children').val() == 3) { //alors si l'homme en question inscrit qu'il a trois enfants dans l'input consacré
+              alert($('#salary').val() - $('#salary').val() * 29 / 100); //il reçoit une réduction de 1% sur les charges décomptées de son salaires (charges de 30%)
+            }else if ($('#children').val() >= 4) { //s'il a quatre enfants ou plus...
+              alert($('#salary').val() - $('#salary').val() * 28 / 100); //il reçoit une réduction de 2% sur les charges décomptées de son salaires (charges de 30%)
+            }else { //sinon...
+              alert($('#salary').val() - $('#salary').val() * 30 / 100); //30% de son salaire en charges est décomptés
+            } // pareil s'il s'agit d'une femme, sauf qu'elle bénéficie automatiquement de 2% de réduction de charges à l'origine :
+          }else if ($('#woman:radio:checked').val()) {
+            if ($('#children').val() == 3) {
+              alert($('#salary').val() - $('#salary').val() * 27 / 100);
+            }else if ($('#children').val() >= 4) {
+              alert($('#salary').val() - $('#salary').val() * 26 / 100);
+            }else {
+              alert($('#salary').val() - $('#salary').val() * 28 / 100);
+            }
+          }
+        })
+      })
+    </script>
+  </body>
+</html>
